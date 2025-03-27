@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo à Página de Música</title>
+    <style>
+    
+        body {
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        
+        p {
+            font-size: 1.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>Bem-vindo à Música</h1>
+        <p>A música é a expressão da alma. Explore nossas playlists e descubra novos sons!</p>
+        <button class="btn">Ouvir Agora</button>
+    </div>
+
+    <script>
+        
+        const imagensDeFundo = [
+            'https://www.euphoriazine.com/wp-content/uploads/2024/05/billie-eilish.jpg', 
+            'https://via.placeholder.com/1920x1080/33FF57/FFFFFF?text=Música+2',
+            'https://via.placeholder.com/1920x1080/3357FF/FFFFFF?text=Música+3'
+        ];
+
+        let indiceImagem = 0;
+
+       
+        function alternarImagem() {
+            document.body.style.backgroundImage = `url('${imagensDeFundo[indiceImagem]}')`;
+            indiceImagem = (indiceImagem + 1) % imagensDeFundo.length;
+        }
+
+        setInterval(alternarImagem, 5000);
+
+        
+        alternarImagem();
+    </script>
+
+</body>
+</html>
