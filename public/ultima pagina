@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprodutor de Música</title>
+    <style>
+    
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e1e2e, #252541);
+            color: white;
+        }
+        .player-container {
+            text-align: center;
+            background: rgba(40, 40, 60, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            width: 350px;
+            backdrop-filter: blur(12px);
+        }
+        img {
+            width: 220px;
+            height: 220px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        button {
+            background: linear-gradient(135deg, #ff5e00, #ff2a6d);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 10px rgba(255, 46, 109, 0.5);
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(255, 46, 109, 0.7);
+        }
+        .progress-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(90deg, #ff5e00, #ff2a6d);
+            width: 0%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 46, 109, 0.8);
+        }
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <h2>Tocando Agora</h2>
+        <img src="https://images.genius.com/403fc039a6fc9dd0698814fd4cafa8a6.1000x1000x1.jpg" alt="Capa do Álbum">
+        <h3 id="song-title">my stange adicction</h3>
+        <p id="artist-name">billie eilish</p>
+        <audio id="audio" src="c:\Users\ALUNO\Downloads\musica.mp3.mp3" ontimeupdate="updateProgress()"></audio>
+        <div class="progress-container" onclick="setProgress(event)">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="time">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+        <div class="controls">
+            <button onclick="playAudio()">▶</button>
+            <button onclick="pauseAudio()">⏸</button>
+            <button onclick="restartAudio()">⏮</button>
+        </div>
+    </div>
+    <script>
+        const audio = document.getElementById('audio');
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function restartAudio() {
+            audio.currentTime = 0;
+        }
+
+        function updateProgress() {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = percentage + '%';
+            
+            let currentMinutes = Math.floor(audio.currentTime / 60);
+            let currentSeconds = Math.floor(audio.currentTime % 60);
+            let durationMinutes = Math.floor(audio.duration / 60);
+            let durationSeconds = Math.floor(audio.duration % 60);
+            
+            if (currentSeconds < 10) currentSeconds = '0' + currentSeconds;
+            if (durationSeconds < 10) durationSeconds = '0' + durationSeconds;
+            
+            currentTimeEl.innerText = `${currentMinutes}:${currentSeconds}`;
+            durationEl.innerText = `${durationMinutes}:${durationSeconds}`;
+        }
+
+        function setProgress(event) {
+            const width = event.currentTarget.clientWidth;
+            const clickX = event.offsetX;
+            const duration = audio.duration;
+            audio.currentTime = (clickX / width) * duration;
+        }
+    </script>
+</body>
+</html>
