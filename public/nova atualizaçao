@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo à Página de Música</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            font-size: 1.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>Bem-vindo à Música</h1>
+        <p>A música é a expressão da alma. Explore nossas playlists e descubra novos sons!</p>
+        <button class="btn" id=" ">Ouvir Agora</button>
+    </div>
+
+    <script>
+        const imagensDeFundo = [
+            'https://www.euphoriazine.com/wp-content/uploads/2024/05/billie-eilish.jpg', 
+            'https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2022/05/815719e-bluesman-1536x1536.jpg',
+            'https://portalpopline.com.br/wp-content/uploads/2022/10/mc-cabelinho-x1.jpg'
+        ];
+
+        let indiceImagem = 0;
+
+        function alternarImagem() {
+            document.body.style.backgroundImage = `url('${imagensDeFundo[indiceImagem]}')`;
+            indiceImagem = (indiceImagem + 1) % imagensDeFundo.length;
+        }
+
+        setInterval(alternarImagem, 5000);
+        alternarImagem();
+
+        
+        document.getElementById('ouvirBtn').addEventListener('click', function() {
+            window.location.href = 'css.html'; 
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spotify</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .sidebar {
+            width: 250px;
+            background: #000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar h2 {
+            color: #1DB954;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+        .menu a:hover {
+            color: #1DB954;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            font-size: 16px;
+            text-align: center;
+        }
+        .playlist {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .playlist h3 {
+            margin-bottom: 10px;
+        }
+        .playlist ul {
+            list-style: none;
+            padding: 0;
+        }
+        .playlist li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+        .playlist li:hover {
+            background: #1DB954;
+            color: black;
+        }
+        .controls {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #181818;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        .controls button, .controls input {
+            background: #1DB954;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .progress {
+            flex: 1;
+            height: 5px;
+            background: #555;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .progress div {
+            height: 100%;
+            width: 0;
+            background: #1DB954;
+        }
+        /* Novo botão */
+        .link-musica1 {
+            margin-top: 20px;
+        }
+        .link-musica1 button {
+            background: #1DB954;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .link-musica1 button:hover {
+            background: #14833b;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Music Player</h2>
+        <div class="menu">
+            <a href="#">Início</a>
+            <a href="#">Explorar</a>
+            <a href="#">Biblioteca</a>
+            <a href="#">Favoritos</a>
+        </div>
+    </div>
+    
+    <div class="main">
+        <input type="text" id="pesquisa" class="search-bar" placeholder="Pesquisar música">
+        <button id="buscar">Buscar</button>
+
+        <!-- Botão que leva para outra página -->
+        <div class="link-musica1">
+            <button onclick="irParaMusica1()">Música 1</button>
+        </div>
+
+        <div class="playlist">
+            <h3>Playlist</h3>
+            <ul id="musicas">
+                <li data-src="https://youtu.be/l08Zw-RY__Q?si=7v8HDHSypj6f_ZHz">Música 1</li>
+                <li data-src="musica2.mp3">Música 2</li>
+                <li data-src="musica3.mp3">Música 3</li>
+            </ul>
+        </div>
+        <div class="playlist">
+            <h3>Histórico</h3>
+            <ul id="historico"></ul>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="prevButton">⏮</button>
+        <button id="pauseButton">⏸</button>
+        <button id="playButton">▶️</button>
+        <button id="nextButton">⏭</button>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+        <div class="progress" id="progress"><div></div></div>
+    </div>
+
+    <audio id="player" hidden>
+        <source id="audioSource" src="" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const imagens = [
+            'https://preview.redd.it/hit-me-hard-and-soft-pc-wallpaper-v0-80blelsdr1zc1.jpeg?auto=webp&s=413903bfc21fe81f0c379c00310f923e4ddd5b4c',
+            'https://th.bing.com/th/id/OIP.z80G4KqbiRhgD6i614ssXgHaE8?rs=1&pid=ImgDetMain',
+            'https://www.jornalnopalco.com.br/wp-content/uploads/2022/10/279713501_702082997875067_1621228815695924867_n.jpg'
+        ];
+        let index = 0;
+        function mudarFundo() {
+            document.querySelector('.main').style.backgroundImage = `url(${imagens[index]})`;
+            index = (index + 1) % imagens.length;
+        }
+        setInterval(mudarFundo, 5000);
+
+        const player = document.getElementById('player');
+        const audioSource = document.getElementById('audioSource');
+        const pauseButton = document.getElementById('pauseButton');
+        const playButton = document.getElementById('playButton');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const volume = document.getElementById('volume');
+        const progress = document.getElementById('progress');
+        const progressBar = progress.querySelector('div');
+        const historico = document.getElementById('historico');
+        let playlist = [...document.querySelectorAll('#musicas li')];
+        let currentIndex = 0;
+
+        function tocarMusica(index) {
+            let musica = playlist[index].dataset.src;
+            audioSource.src = musica;
+            player.load();
+            player.play();
+            currentIndex = index;
+            historico.innerHTML += `<li>${playlist[index].textContent}</li>`;
+        }
+
+        playButton.addEventListener('click', () => player.play());
+        pauseButton.addEventListener('click', () => player.pause());
+        prevButton.addEventListener('click', () => tocarMusica((currentIndex - 1 + playlist.length) % playlist.length));
+        nextButton.addEventListener('click', () => tocarMusica((currentIndex + 1) % playlist.length));
+        volume.addEventListener('input', () => player.volume = volume.value);
+
+        player.addEventListener('timeupdate', () => {
+            const percent = (player.currentTime / player.duration) * 100;
+            progressBar.style.width = percent + '%';
+        });
+
+        playlist.forEach((musica, index) => musica.addEventListener('click', () => tocarMusica(index)));
+
+        
+        function irParaMusica1() {
+            window.location.href = 'style.html'; 
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spotify</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .sidebar {
+            width: 250px;
+            background: #000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar h2 {
+            color: #1DB954;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+        .menu a:hover {
+            color: #1DB954;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            font-size: 16px;
+            text-align: center;
+        }
+        .playlist {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .playlist h3 {
+            margin-bottom: 10px;
+        }
+        .playlist ul {
+            list-style: none;
+            padding: 0;
+        }
+        .playlist li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+        .playlist li:hover {
+            background: #1DB954;
+            color: black;
+        }
+        .controls {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #181818;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        .controls button, .controls input {
+            background: #1DB954;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .progress {
+            flex: 1;
+            height: 5px;
+            background: #555;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .progress div {
+            height: 100%;
+            width: 0;
+            background: #1DB954;
+        }
+        /* Novo botão */
+        .link-musica1 {
+            margin-top: 20px;
+        }
+        .link-musica1 button {
+            background: #1DB954;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .link-musica1 button:hover {
+            background: #14833b;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Music Player</h2>
+        <div class="menu">
+            <a href="#">Início</a>
+            <a href="#">Explorar</a>
+            <a href="#">Biblioteca</a>
+            <a href="#">Favoritos</a>
+        </div>
+    </div>
+    
+    <div class="main">
+        <input type="text" id="pesquisa" class="search-bar" placeholder="Pesquisar música">
+        <button id="buscar">Buscar</button>
+
+        <!-- Botão que leva para outra página -->
+        <div class="link-musica1">
+            <button onclick="irParaMusica1()">Música 1</button>
+        </div>
+
+        <div class="playlist">
+            <h3>Playlist</h3>
+            <ul id="musicas">
+                <li data-src="https://youtu.be/l08Zw-RY__Q?si=7v8HDHSypj6f_ZHz">Música 1</li>
+                <li data-src="musica2.mp3">Música 2</li>
+                <li data-src="musica3.mp3">Música 3</li>
+            </ul>
+        </div>
+        <div class="playlist">
+            <h3>Histórico</h3>
+            <ul id="historico"></ul>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="prevButton">⏮</button>
+        <button id="pauseButton">⏸</button>
+        <button id="playButton">▶️</button>
+        <button id="nextButton">⏭</button>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+        <div class="progress" id="progress"><div></div></div>
+    </div>
+
+    <audio id="player" hidden>
+        <source id="audioSource" src="" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const imagens = [
+            'https://preview.redd.it/hit-me-hard-and-soft-pc-wallpaper-v0-80blelsdr1zc1.jpeg?auto=webp&s=413903bfc21fe81f0c379c00310f923e4ddd5b4c',
+            'https://th.bing.com/th/id/OIP.z80G4KqbiRhgD6i614ssXgHaE8?rs=1&pid=ImgDetMain',
+            'https://www.jornalnopalco.com.br/wp-content/uploads/2022/10/279713501_702082997875067_1621228815695924867_n.jpg'
+        ];
+        let index = 0;
+        function mudarFundo() {
+            document.querySelector('.main').style.backgroundImage = `url(${imagens[index]})`;
+            index = (index + 1) % imagens.length;
+        }
+        setInterval(mudarFundo, 5000);
+
+        const player = document.getElementById('player');
+        const audioSource = document.getElementById('audioSource');
+        const pauseButton = document.getElementById('pauseButton');
+        const playButton = document.getElementById('playButton');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const volume = document.getElementById('volume');
+        const progress = document.getElementById('progress');
+        const progressBar = progress.querySelector('div');
+        const historico = document.getElementById('historico');
+        let playlist = [...document.querySelectorAll('#musicas li')];
+        let currentIndex = 0;
+
+        function tocarMusica(index) {
+            let musica = playlist[index].dataset.src;
+            audioSource.src = musica;
+            player.load();
+            player.play();
+            currentIndex = index;
+            historico.innerHTML += `<li>${playlist[index].textContent}</li>`;
+        }
+
+        playButton.addEventListener('click', () => player.play());
+        pauseButton.addEventListener('click', () => player.pause());
+        prevButton.addEventListener('click', () => tocarMusica((currentIndex - 1 + playlist.length) % playlist.length));
+        nextButton.addEventListener('click', () => tocarMusica((currentIndex + 1) % playlist.length));
+        volume.addEventListener('input', () => player.volume = volume.value);
+
+        player.addEventListener('timeupdate', () => {
+            const percent = (player.currentTime / player.duration) * 100;
+            progressBar.style.width = percent + '%';
+        });
+
+        playlist.forEach((musica, index) => musica.addEventListener('click', () => tocarMusica(index)));
+
+        
+        function irParaMusica1() {
+            window.location.href = 'style.html'; 
+        }
+    </script>
+</body>
+</html>
+
